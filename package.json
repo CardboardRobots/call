@@ -1,0 +1,45 @@
+{
+  "name": "@cardboardrobots/call",
+  "version": "0.0.0",
+  "description": "Fetch wrapper",
+  "repository": {
+    "url": "http://github.com/cardboardrobots/call"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsc",
+    "test": "npm run lint && npm run unit",
+    "clean": "rimraf ./dist",
+    "prepublishOnly": "rimraf ./dist && tsc --declaration",
+    "watch": "tsc --watch --declaration",
+    "unit": "jest --verbose --coverage",
+    "lint": "eslint 'src/**/*.ts' --fix"
+  },
+  "author": "sean.johnson.arizona@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@shopify/eslint-plugin": "^40.3.0",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "jest-fetch-mock": "^3.0.3",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ],
+    "setupFiles": [
+      "./src/setupJest.js"
+    ]
+  }
+}
