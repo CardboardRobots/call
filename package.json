@@ -1,6 +1,6 @@
 {
   "name": "@cardboardrobots/call",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch wrapper",
   "repository": {
     "url": "http://github.com/cardboardrobots/call"
