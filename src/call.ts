@@ -11,7 +11,15 @@ export const BaseOptions: CallOptions = {
 
 export async function call<TRESULT>(
     url: string,
-    { isText, headers, ...options }: RequestInit & { isText?: boolean } = {}
+    {
+        isText,
+        onStream,
+        headers,
+        ...options
+    }: RequestInit & {
+        isText?: boolean;
+        onStream?: (stream?: ReadableStreamDefaultReader<Uint8Array>) => void;
+    } = {}
 ): Promise<TRESULT> {
     const { headers: baseHeaders, ...baseOptions } = BaseOptions;
     const result = await fetch(url, {
@@ -22,6 +30,10 @@ export async function call<TRESULT>(
         },
         ...options,
     });
+    if (onStream) {
+        const reader = result.body?.getReader();
+        onStream(reader);
+    }
 
     let value: any;
     if (isText) {
